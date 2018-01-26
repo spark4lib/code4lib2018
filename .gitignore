@@ -1,3 +1,9 @@
+# zeppelin docker logs
+logs/
+
+# temporary, hide zeppelin notebook for now
+notebook/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

@@ -2,7 +2,7 @@
 
 Welcome to the open repository, documentation and materials for the Code4Lib 2018 Spark in the Dark 101 Workshop!
 
-* When: Monday, February 13th, 2018, 9:00 AM - 12:00 PM
+* When: Tuesday, February 13th, 2018, 9:00 AM - 12:00 PM
 * Where: [Omni Shoreham Hotel Senate Room, Main Conference Venue](http://2018.code4lib.org/general-info/venues/)
 * Workshop Materials: [github.com/spark4lib/code4lib2018](https://github.com/spark4lib/code4lib2018)
 * Workshop Slides (work in progress): [bit.ly/C4L18SparkSlides](http://bit.ly/C4L18SparkSlides) or in this Repository (TBD)
@@ -22,14 +22,15 @@ We ask that all participants come to the workshop ready to dive in by reviewing 
 Time               | Topic                                                          | Leader(s)
 ------------------ | -------------------------------------------------------------- | ------------------------------------------
 **9-9:10 AM**      | Workshop Introduction, Logistics, Goals (10 minutes)           | [Christina](mailto:cmharlow@stanford.edu)
-**9:10-9:40 AM**   | Spark Theory: Spark Architecture (sparkitecture?) (30 minutes) | [Michael](mailto:michael@dp.la)
-**9:40-10:10 AM**  | Spark Theory: RDD vs. DataFrame APIs (30 minutes)              | [Scott](mailto:scott@dp.la)
-**10:10-10:25 AM** | Spark Theory: Optimal use cases for Spark (15 minutes)         | [Audrey](mailto:audrey@dp.la)
-**10:25-10:40 AM** | break (15 minutes)                                             | n/a
-**10:40-10:55 AM** | Spark Practice: Env/setup (15 minutes)                         | [Mark](mailto:mb@dp.la) & [Justin](mailto:jcoyne@stanford.edu)
-**10:55-11:25 AM** | Spark Practice: Working with spark-shell (30 minutes)          | [Christina](mailto:cmharlow@stanford.edu) & [Audrey](mailto:audrey@dp.la)
-**11:25-11:45 AM** | Spark Practice: Interacting with Real World Data (20 minutes)  | TBD
-**11:45-Noon**     | Examples & Wrap-Up (15 minutes)                                | TBD
+**9:10-9:25 AM**   | Spark Theory: Optimal use cases for Spark (15 minutes)         | [Audrey](mailto:audrey@dp.la)
+**9:25-9:40 AM**   | Spark Theory: Spark Architecture (sparkitecture?) (15 minutes) | [Michael](mailto:michael@dp.la)
+**9:40-9:55 AM**   | Spark Theory: RDD vs. DataFrame APIs (15 minutes)              | [Scott](mailto:scott@dp.la)
+**9:55-10:15 AM**  | Spark Practice: Env/setup (20 minutes)                         | [Mark](mailto:mb@dp.la) & [Justin](mailto:jcoyne@stanford.edu)
+**10:15-10:30 AM** | break (15 minutes)                                             | n/a
+**10:30-10:50 AM** | Spark Practice: Working with spark-shell (20 minutes)          | [Christina](mailto:cmharlow@stanford.edu) & [Audrey](mailto:audrey@dp.la)
+**10:50-11:10 AM** | Spark Practice: Working with zeppelin (20 minutes)             | [Christina](mailto:cmharlow@stanford.edu) & [Audrey](mailto:audrey@dp.la)
+**11:10-11:30 AM** | Spark Practice: Interacting with Real World Data (20 minutes)  | Whole Group
+**11:30-Noon**     | Examples & Wrap-Up (30 minutes)                                | Whole Group
 
 ## Contact Before, During, After the Workshop
 

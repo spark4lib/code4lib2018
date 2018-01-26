@@ -1,0 +1,8 @@
+Name,Institution Type,Format,URL,Description
+CMOA,Museum,"JSON, CSV",https://github.com/cmoa/collection,
+Penn Museum,Museum,"JSON, CSV, XML",https://www.penn.museum/collections/data.php,JSON is poorly structured
+Met Museum,Museum,CSV,,"¯\_(ツ)_/¯
+"
+DigitalNZ Te Puna Web Directory,Library,XML,https://natlib.govt.nz/files/data/tepunawebdirectory.xml,MARC XML
+Canadian Subject Headings,Library,RDF/XML,http://www.collectionscanada.gc.ca/obj/900/f11/040004/csh.rdf,"Ugh, rdf"
+DPLA,Aggregator ,"CSV,JSON,XML",dp.la,

@@ -46,7 +46,12 @@ To keep this workshop a safe and inclusive space, we ask that you review and fol
 
 We request that all participants:
  - **bring their own laptop**, preferably one you have installation or admin privileges on.
- - Have the software listed below (TBD) as well as an up-to-date modern web browser (basically, not Internet Explorer) on your laptop.
- - You should also fill out [this pre-workshop survey]() by **TBD Date** in order to help the facilitators best plan.
+ - Have the software listed below as well as an up-to-date modern web browser (basically, not Internet Explorer) on your laptop.
+ - You should also fill out [this pre-workshop survey](https://goo.gl/forms/Ps9KhjnsauMbGdpv2) by **February 8th** in order to help the facilitators best plan.
 
 If you have any issues with the above, please contact us ASAP using the [communication methods detailed above](#contact-before-during-after-the-workshop).
+
+### Docker info
+
+
+### Backup Option

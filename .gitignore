@@ -1,8 +1,4 @@
-# zeppelin docker logs
-logs/
-
-# temporary, hide zeppelin notebook for now
-notebook/
+.DS_Store
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

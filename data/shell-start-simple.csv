@@ -1,6 +1,0 @@
-"Name","Type","Format","URL","Description","Scott's Unofficial Score"
-"CMOA","Museum"	"JSON, CSV","https://github.com/cmoa/collection","N/A","10"
-"Penn Museum","Museum","JSON, CSV, XML","N/A","JSON is poorly structed","8"
-"Met Museum","Museum","CSV","N/A","Ugh. the met...","5"
-"DigitalNZ Te Puna Web Directory","Library","XML","https://natlib.govt.nz/files/data/tepunawebdirectory.xml","MARC XML","4"
-"Canadian Subject Headings","Library","RDF/XML","http://www.collectionscanada.gc.ca/obj/900/f11/040004/csh.rdf","Ugh, rdf","2"

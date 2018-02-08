@@ -45,7 +45,7 @@ To keep this workshop a safe and inclusive space, we ask that you review and fol
 ## Participant Requirements
 
 We request that all participants:
- - You should also fill out [this pre-workshop survey](https://goo.gl/forms/Ps9KhjnsauMbGdpv2) by **February 8th** in order to help the facilitators best plan.
+ - You should also fill out [this pre-workshop survey](https://goo.gl/forms/Ps9KhjnsauMbGdpv2) by **February 9th** in order to help the facilitators best plan.
 - You should bring a laptop with a modern web browser and at least 2Gb memory (at we strongly recommend, if you want to play with more than intro data, you think at least 4Gb);
 - On that laptop, please already have installed the latest, stable version of [Docker Community Edition](https://www.docker.com/community-edition) installed;
 - Also on that laptop, please have bookmarked or have pulled down the latest version of this GitHub repository.

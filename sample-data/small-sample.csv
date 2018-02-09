@@ -1,8 +1,8 @@
-Name,Institution Type,Format,URL,Description,Informal Score
-CMOA,Museum,"JSON, CSV",https://github.com/cmoa/collection,,10
-Penn Museum,Museum,"JSON, CSV, XML",https://www.penn.museum/collections/data.php,JSON is poorly structured,7
-Met Museum,Museum,CSV,,"¯\_(ツ)_/¯
-",3
-DigitalNZ Te Puna Web Directory,Library,XML,https://natlib.govt.nz/files/data/tepunawebdirectory.xml,MARC XML,3
-Canadian Subject Headings,Library,RDF/XML,http://www.collectionscanada.gc.ca/obj/900/f11/040004/csh.rdf,"Ugh, rdf",4
-DPLA,Aggregator ,"CSV,JSON,XML",dp.la,,100
+"Name","Institution Type","Format","URL","Description","Informal Score"
+"CMOA","Museum","JSON, CSV","https://github.com/cmoa/collection","10"
+"Penn Museum","Museum","JSON, CSV, XML","https://www.penn.museum/collections/data.php","JSON is poorly structured","7"
+"Met Museum","Museum","CSV",,"¯\_(ツ)_/¯
+","3"
+"DigitalNZ Te Puna Web Directory","Library","XML","https://natlib.govt.nz/files/data/tepunawebdirectory.xml","MARC XML","3"
+"Canadian Subject Headings","Library","RDF/XML","http://www.collectionscanada.gc.ca/obj/900/f11/040004/csh.rdf","Ugh, rdf","4"
+"DPLA","Aggregator","CSV,JSON,XML","dp.la","100"

@@ -59,14 +59,14 @@ See [the CSV file here](../sample-data/small-sample.csv).
 
 Read the CSV using the PySpark read & CSV libraries in our interpreter shell:
 
-```py
+```
 > spark.read.csv("sample-data/small-sample.csv")
 DataFrame[_c0: string, _c1: string, _c2: string, _c3: string, _c4: string, _c5: string]
 ```
 
 We see it makes a dataframe. But what if we want to see the data? Run `.show()` on that data to see what was read in?
 
-```py
+```
 > spark.read.csv("sample-data/small-sample.csv").show()
 +--------------------+----------------+--------------+--------------------+--------------------+--------------+
 |                 _c0|             _c1|           _c2|                 _c3|                 _c4|           _c5|
@@ -85,7 +85,7 @@ We see it makes a dataframe. But what if we want to see the data? Run `.show()` 
 Great! But... not entirely. What about headers?
 
 
-```py
+```
 > spark.read.csv("sample-data/small-sample.csv", header=True).show()
 +--------------------+----------------+--------------+--------------------+--------------------+--------------+
 |                Name|Institution Type|        Format|                 URL|         Description|Informal Score|
@@ -104,7 +104,7 @@ That's better.
 
 But hold up, we seem to have trouble with a pesky newline in one of the cells. Let's try `DROPMALFORMED` mode and see if that helps.
 
-```py
+```
 > spark.read.csv("sample-data/small-sample.csv", header=True, mode="DROPMALFORMED").show()
 +--------------------+----------------+--------------+--------------------+--------------------+--------------+
 |                Name|Institution Type|        Format|                 URL|         Description|Informal Score|
@@ -119,7 +119,7 @@ But hold up, we seem to have trouble with a pesky newline in one of the cells. L
 
 Well, that's better, but we don't want to lose the Met's row. Let's try the `multiLine` option instead (this option is available in Spark 2.2.x ONLY).
 
-```py
+```
 > spark.read.csv("sample-data/small-sample.csv", header=True, multiLine=True).show()
 +--------------------+----------------+--------------+--------------------+--------------------+---------------+
 |                Name|Institution Type|        Format|                 URL|         Description|Informal Score
@@ -136,7 +136,7 @@ Well, that's better, but we don't want to lose the Met's row. Let's try the `mul
 
 That's... better? That column still looks wonky, but that may just be `show()` awkward presentation. Let's inspect the inferred schema of this DataFrame:
 
-```py
+```
 > spark.read.csv("sample-data/small-sample.csv", header=True, multiLine=True).printSchema()
 root
  |-- Name: string (nullable = true)
@@ -149,7 +149,7 @@ root
 
 Looks good. But let's go ahead and pass in a specified schema. First we need to create one with the specific datatypes declared:
 
-```py
+```
 > from pyspark.sql.types import *
 > customSchema = StructType([
     StructField("Name", StringType(), True),

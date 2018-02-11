@@ -33,7 +33,7 @@ SparkSession available as 'spark'.
 ```
 
 Notes:
-- We are running in the PySpark interpreter to see spark-shell. Once could also run a Scala interpreter.
+- We are running in the PySpark interpreter to see spark-shell. One could also run a Scala interpreter.
 - This automatically makes a SparkSession for us; when coding, you'll need to start this yourself.
 
 ## Check out the Spark Standalone Dashboard
@@ -64,7 +64,7 @@ Read the CSV using the PySpark read & CSV libraries in our interpreter shell:
 DataFrame[_c0: string, _c1: string, _c2: string, _c3: string, _c4: string, _c5: string]
 ```
 
-We see it makes a dataframe. But what if we want to see the data? Run `.show()` on that data to see what was read in?
+We see it makes a DataFrame. But what if we want to see the data? Run `.show()` on that data to see what was read in.
 
 ```
 > spark.read.csv("sample-data/small-sample.csv").show()
@@ -147,7 +147,7 @@ root
  |-- Informal Score: string (nullable = true)
 ```
 
-Looks good. But let's go ahead and pass in a specified schema. First we need to create one with the specific datatypes declared:
+Looks good. But let's go ahead and pass in a specified schema so `Informal Score` is not a string. First we need to create one with the specific datatypes declared:
 
 ```
 > from pyspark.sql.types import *
@@ -175,13 +175,13 @@ Looks good. But let's go ahead and pass in a specified schema. First we need to 
 
 # Simple Data Analysis
 
-Our CSV has been read into a Dataframe pretty well, and is now stored at `sampleDf`. We're still a bit worried about that line, let's check the number of rows:
+Our CSV has been read into a DataFrame pretty well, and is now stored at `sampleDf`. We're still a bit worried about that line, let's check the number of rows:
 
 ```sh
 > sampleDf.count()
 6
 ```
-Now, do we have the correct number of non-header rows? 6? Yep. Now let's inspect some of the rows (just a provided number, akin to `head` in Bash):
+Now, do we have the correct number of non-header rows? 6? Yep. Now let's inspect some of the rows using `head`, whitch takes a number of rows we want to see as a parameter:
 
 ```sh
 > sampleDf.head(4)
@@ -397,7 +397,7 @@ With these simple, connected functions, we should have what we need to handle ch
 +-------+
 ```
 
-Hold on- why is this not fixed yet? Because of something common to data mungers: whitespace. Let's remove that white space using regex replacement:
+Hold on- why is this not fixed yet? Because of something well-known to data mungers: whitespace. Let's remove that white space using regex replacement:
 
 ```sh
 > sampleDf = sampleDf.withColumn("Format", regexp_replace(sampleDf.Format, "\s+", ""))

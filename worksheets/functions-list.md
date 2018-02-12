@@ -4,7 +4,7 @@
 
 ### Shown in Workshop
 
-* **agg:**
+* **agg:** Aggregate on the entire DataFrame without groups (shorthand for df.groupBy.agg()). Runs the given operation on the aggregate.
 * **collect():** Returns all the records as a list of Row. *Note: we only see this in the context of a SQL call, but it can be used outside of that.*
 * **columns:** Returns all column names as a list.
 * **count():** Returns the number of rows in this DataFrame.

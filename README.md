@@ -29,8 +29,8 @@ Time               | Topic                                                      
 **10:15-10:30 AM** | break (15 minutes)                                             | n/a
 **10:30-10:50 AM** | Spark Practice: Working with spark-shell (20 minutes)          | [Christina](mailto:cmharlow@stanford.edu) & [Audrey](mailto:audrey@dp.la)
 **10:50-11:10 AM** | Spark Practice: Working with zeppelin (20 minutes)             | [Christina](mailto:cmharlow@stanford.edu) & [Audrey](mailto:audrey@dp.la)
-**11:10-11:30 AM** | Spark Practice: Interacting with Real World Data (20 minutes)  | Whole Group
-**11:30-Noon**     | Examples & Wrap-Up (30 minutes)                                | Whole Group
+**11:10-11:45 AM** | Spark Practice: Interacting with Real World Data (20 minutes)  | Whole Group
+**11:45-Noon**     | Examples & Wrap-Up (30 minutes)                                | Whole Group
 
 ## Contact Before, During, After the Workshop
 

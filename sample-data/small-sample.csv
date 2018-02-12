@@ -5,4 +5,4 @@
 ","3"
 "DigitalNZ Te Puna Web Directory","Library","XML","https://natlib.govt.nz/files/data/tepunawebdirectory.xml","MARC XML","3"
 "Canadian Subject Headings","Library","RDF/XML","http://www.collectionscanada.gc.ca/obj/900/f11/040004/csh.rdf","Ugh, rdf","4"
-"DPLA","Aggregator","CSV,JSON,XML","dp.la","100"
+"DPLA","Aggregator","CSV,JSON,XML","dp.la","","100"

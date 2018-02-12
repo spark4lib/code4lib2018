@@ -3,7 +3,7 @@
 Welcome to the open repository, documentation and materials for the Code4Lib 2018 Spark in the Dark 101 Workshop!
 
 * When: Tuesday, February 13th, 2018, 9:00 AM - 12:00 PM
-* Where: [Omni Shoreham Hotel Senate Room, Main Conference Venue](http://2018.code4lib.org/general-info/venues/)
+* Where: [**West End Neighborhood Library**](http://2018.code4lib.org/workshops/spark-in-the-dark-101)
 * Workshop Materials: [github.com/spark4lib/code4lib2018](https://github.com/spark4lib/code4lib2018)
 * Workshop Slides: [bit.ly/C4L18SparkSlides](http://bit.ly/C4L18SparkSlides) or [in this Repository](slides/SparkInTheDark101.pdf)
 

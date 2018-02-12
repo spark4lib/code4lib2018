@@ -4,12 +4,12 @@ In this session, you will learn Zeppelin, Spark, & Spark SQL basics via primaril
 
 Table of Contents:
 
-1. Getting Started
-1. Part 1: Creating a Dataframe Instance from a CSV
-1. Part 2: Simple Analysis of our Dataset via Dataframe API
-1. Part 3: Creating New Dataframes to Expand or Rework our Original Dataset
-1. Part 4: Using SQL to Analyze our Dataset
-1. Part 5: Simple Data Visualization
+1. [Getting Started](#getting-started)
+1. [Part 1: Creating a Dataframe Instance from a CSV](#part-1-creating-a-dataframe-instance-from-a-csv)
+1. [Part 2: Simple Analysis of our Dataset via Dataframe API](#part-2-simple-analysis-of-our-dataset-via-dataframe-api)
+1. [Part 3: Creating New Dataframes to Expand or Rework our Original Dataset](#part-3-creating-new-dataframes-to-expand-or-rework-our-original-dataset)
+1. [Part 4: Using SQL to Analyze our Dataset](#part-4-using-sql-to-analyze-our-dataset)
+1. [Part 5: Simple Data Visualization](#part-5-simple-data-visualization)
 
 ## Getting Started
 

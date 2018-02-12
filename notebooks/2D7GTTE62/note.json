@@ -1,0 +1,1539 @@
+{
+  "paragraphs": [
+    {
+      "title": "Spark \u0026 CHO Data - Spark Workshop, Code4Lib 2018",
+      "text": "%md\nSpark Workshop, code4lib 2018\nMaterials at [github.com/spark4lib/code4lib2018](https://github.com/spark4lib/code4lib2018)\n\nThe following steps should also be available, with other notes, here: [https://github.com/spark4lib/code4lib2018/tree/master/worksheets/](https://github.com/spark4lib/code4lib2018/tree/master/worksheets) .",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eSpark Workshop, code4lib 2018\u003cbr/\u003eMaterials at \u003ca href\u003d\"https://github.com/spark4lib/code4lib2018\"\u003egithub.com/spark4lib/code4lib2018\u003c/a\u003e\u003c/p\u003e\n\u003cp\u003eThe following steps should also be available, with other notes, here: \u003ca href\u003d\"https://github.com/spark4lib/code4lib2018/tree/master/worksheets\"\u003ehttps://github.com/spark4lib/code4lib2018/tree/master/worksheets/\u003c/a\u003e .\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922627_618942572",
+      "id": "20180131-144721_1911570621",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Introduction",
+      "text": "%md\nIn this session, we want you to apply what we learned in Spark Shell Introduction (Spark SQL, PySpark, \u0026 Zeppelin) for analyzing some provided Cultural Heritage Organization (CHO) data. \n\nYou will be working in small groups on this.",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eIn this session, we want you to apply what we learned in Spark Shell Introduction (Spark SQL, PySpark, \u0026amp; Zeppelin) for analyzing some provided Cultural Heritage Organization (CHO) data. \u003c/p\u003e\n\u003cp\u003eYou will be working in small groups on this.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922631_617403577",
+      "id": "20180211-041642_2058564180",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Environment Set-up Test",
+      "text": "%spark\n\nprintln(\"Spark Version: \" + sc.version)\n\nval penndata \u003d sc.textFile(\"penn.csv\")\nval cmoadata \u003d sc.textFile(\"cmoa.csv\")\nprintln(\"penn count: \" + penndata.count)\nprintln(\"cmoadata count: \" + cmoadata.count)",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922632_615479832",
+      "id": "20180131-144538_432654498",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Preview CHO Data Options: CMOA",
+      "text": "%sh\n\ncat code4lib2018/sample-data/cmoa/README\nhead code4lib2018/sample-data/cmoa/cmoa.csv",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "lineNumbers": true,
+        "tableHide": false,
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sh",
+        "editorHide": false,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922632_615479832",
+      "id": "20180210-010216_1168213332",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Preview CHO Data Options: Penn",
+      "text": "%sh\n\ncat code4lib2018/sample-data/penn\\ museum/README\nunzip code4lib2018/sample-data/penn\\ museum/all-20180121.zip -d code4lib2018/sample-data/penn\\ museum/\nhead code4lib2018/sample-data/penn\\ museum/all-20180121.csv",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "lineNumbers": true,
+        "tableHide": false,
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sh",
+        "editorHide": false,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922632_615479832",
+      "id": "20180212-044729_2120047837",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "",
+      "text": "%md\n# Part 1: Creating a Dataframe Instance from CHO CSV",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "title": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003ePart 1: Creating a Dataframe Instance from CHO CSV\u003c/h1\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922632_615479832",
+      "id": "20180211-043612_1888524633",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Read a CSV File into a Dataframe Instance with Headers",
+      "text": "pennDf \u003d spark.read.csv(\"code4lib2018/sample-data/penn\\ museum/all-20180121.csv\", header\u003dTrue, inferSchema\u003dTrue)\npennDf.printSchema()",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "lineNumbers": true,
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "editorHide": false,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922633_615095083",
+      "id": "20180210-002750_1470779955",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Read a CSV File into a Dataframe Instance with Headers",
+      "text": "pennDf.show(10, truncate\u003dTrue)",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "lineNumbers": true,
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "editorHide": false,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922633_615095083",
+      "id": "20180211-233520_399031330",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Show Columns",
+      "text": "pennDf.columns",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922634_616249330",
+      "id": "20180212-045044_481169447",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Check out emuIRN",
+      "text": "pennDf.select(\u0027emuIRN\u0027).distinct().show(10)",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 4.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922634_616249330",
+      "id": "20180211-234002_1351508361",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Check out Object Number",
+      "text": "pennDf.select(\u0027object_number\u0027).distinct().show(10)",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 4.0,
+        "editorMode": "ace/mode/scala",
+        "editorHide": false,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922634_616249330",
+      "id": "20180211-234030_834783507",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Check out url",
+      "text": "pennDf.select(\u0027url\u0027).distinct().show(10)",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 4.0,
+        "editorMode": "ace/mode/scala",
+        "editorHide": false,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922634_616249330",
+      "id": "20180211-234038_1787924327",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Create Our Own Schema \u0026 Read the CSV into a Dataframe Instance with our Schema",
+      "text": "from pyspark.sql.types import *\n\npennSchema \u003d StructType([\n  StructField(\"emuIRN\", IntegerType(), False),\n  StructField(\"curatorial_section\", StringType(), True),\n  StructField(\"object_number\", StringType(), True),\n  StructField(\"object_name\", StringType(), True),\n  StructField(\"native_name\", StringType(), True),\n  StructField(\"culture\", StringType(), True),\n  StructField(\"provenience\", StringType(), True),\n  StructField(\"material\", StringType(), True),\n  StructField(\"period\", StringType(), True),\n  StructField(\"date_made\", StringType(), True),\n  StructField(\"date_made_early\", StringType(), True),\n  StructField(\"date_made_late\", StringType(), True),\n  StructField(\"accession_credit_line\", StringType(), True),\n  StructField(\"creator\", StringType(), True),\n  StructField(\"description\", StringType(), True),\n  StructField(\"manufacture_locationlocus\", StringType(), True),\n  StructField(\"culture_area\", StringType(), True),\n  StructField(\"technique\", StringType(), True),\n  StructField(\"iconography\", StringType(), True),\n  StructField(\"measurement_height\", StringType(), True),\n  StructField(\"measurement_length\", StringType(), True),\n  StructField(\"measurement_width\", StringType(), True),\n  StructField(\"measurement_outside_diameter\", StringType(), True),\n  StructField(\"measurement_tickness\", StringType(), True),\n  StructField(\"measurement_unit\", StringType(), True),\n  StructField(\"other_numbers\", StringType(), True),\n  StructField(\"url\", StringType(), True)])\n\n\npennDf \u003d spark.read.csv(\"code4lib2018/sample-data/penn\\ museum/all-20180121.csv\", header\u003dTrue, schema\u003dpennSchema)\npennDf.count()",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922635_615864581",
+      "id": "20180205-224139_1405421836",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Get Sample Response of our DataFrame",
+      "text": "pennDf.sample(False, 0.10, 42).show()",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922635_615864581",
+      "id": "20180212-045408_436964083",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "",
+      "text": "%md\n### Stopping Point: Now you need to walk through, quickly assess, select, and load a CHO CSV into a Dataframe.",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "title": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eStopping Point: Now you need to walk through, quickly assess, select, and load a CHO CSV into a Dataframe.\u003c/h3\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922635_615864581",
+      "id": "20180211-204040_1741647870",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Loading CSV into DataFrame Working Space",
+      "text": "\n",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922636_613940837",
+      "id": "20180212-045445_2022795863",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "",
+      "text": "%md\n# Part 2: Simple Analysis of our Dataset via Dataframe API",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "title": false,
+        "results": {},
+        "enabled": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003ePart 2: Simple Analysis of our Dataset via Dataframe API\u003c/h1\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922638_614710334",
+      "id": "20180211-044238_542100528",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Show Specific Columns",
+      "text": "pennDf.select(\"curatorial_section\", \"emuIRN\").show(10)",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 6.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922638_614710334",
+      "id": "20180211-044743_1705262796",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Filter Specific Columns ",
+      "text": "americanDf \u003d pennDf.filter(pennDf.curatorial_section \u003d\u003d \u0027American\u0027)\namericanDf.select(\u0027emuIRN\u0027, \u0027url\u0027, \u0027object_name\u0027, \u0027creator\u0027).show(10)",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 6.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922638_614710334",
+      "id": "20180210-011244_1927422767",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "\"Earliest\" Dates for Objects?",
+      "text": "pennDf.orderBy(\"date_made_early\").select(\u0027emuIRN\u0027, \u0027date_made\u0027, \u0027object_name\u0027, \u0027object_number\u0027, \u0027culture_area\u0027).show(10)",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922639_614325585",
+      "id": "20180210-212920_1413184855",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "\"Earliest\" , Non-Null Dates for Objects?",
+      "text": "pennDf.filter(pennDf.date_made.isNotNull()).orderBy(\"date_made_early\").select(\u0027emuIRN\u0027, \u0027date_made\u0027, \u0027object_name\u0027, \u0027object_number\u0027, \u0027culture_area\u0027).show(10)",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "editorHide": false,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922639_614325585",
+      "id": "20180212-050343_962594735",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "How Many Items per Curatorial Section?",
+      "text": "pennDf.groupBy(\"curatorial_section\").count().show()",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 6.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922640_624713806",
+      "id": "20180210-011435_1074589917",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Average Height of Objects by Period?",
+      "text": "pennDf.groupBy(\"period\").agg({\"measurement_height\": \u0027mean\u0027}).show(10)",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 6.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922640_624713806",
+      "id": "20180211-053908_436020978",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Distinct Creators",
+      "text": "pennDf.select(\"creator\").distinct().show()",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 4.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922640_624713806",
+      "id": "20180210-211959_911280658",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Number of Distinct Creators",
+      "text": "pennDf.select(\"creator\").distinct().count()",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 4.0,
+        "editorMode": "ace/mode/scala",
+        "editorHide": false,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922640_624713806",
+      "id": "20180212-051332_1623401677",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Number of Related Resources per Creator",
+      "text": "from pyspark.sql.functions import countDistinct\npennDf.select(\"creator\", \"emuIRN\")\\\n      .groupBy(\"creator\")\\\n      .agg(countDistinct(\"emuIRN\")\\\n      .alias(\"objects\"))\\\n      .orderBy(\"objects\", ascending\u003dFalse).show(10)",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 4.0,
+        "editorMode": "ace/mode/scala",
+        "editorHide": false,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922640_624713806",
+      "id": "20180212-051343_572426650",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "",
+      "text": "%md\n### Stopping Point: Use Grouping, Distinct, Ordering, etc. To Get Analytics on Your CHO Dataset.",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "title": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eStopping Point: Use Grouping, Distinct, Ordering, etc. To Get Analytics on Your CHO Dataset.\u003c/h3\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922640_624713806",
+      "id": "20180211-204432_1327378340",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Your Working Space: Analysis of Data",
+      "text": "\n",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922641_624329057",
+      "id": "20180211-204542_862151313",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "",
+      "text": "%md\n# Part 3: Creating Derivative DataFrames for your CHO",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "title": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003ePart 3: Creating Derivative DataFrames for your CHO\u003c/h1\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922641_624329057",
+      "id": "20180211-052933_847596982",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Get DataFrame with Curatorial, ID, Culture, URL, \u0026 Period, Dropping Nulls",
+      "text": "curatorialOnlyDf \u003d pennDf.select(\u0027curatorial_section\u0027, \u0027emuIRN\u0027, \u0027culture\u0027, \u0027url\u0027, \u0027period\u0027).dropna()\ncuratorialOnlyDf.sample(False, 0.01, 42).show()",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922641_624329057",
+      "id": "20180210-212150_723012495",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Get DataFrame with Records that Have no Title, Creator or Description",
+      "text": "noDescDf \u003d pennDf.filter(pennDf.creator.isNull()).filter(pennDf.description.isNull()).filter(pennDf.object_name.isNull())\nprint(noDescDf.count())\nnoDescDf.select(\u0027description\u0027, \u0027creator\u0027, \u0027emuIRN\u0027, \u0027curatorial_section\u0027, \u0027object_name\u0027).show(10, truncate\u003dTrue)",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922641_624329057",
+      "id": "20180211-032722_1642010293",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Explode Object Names based on \u0027|\u0027 Delimiter",
+      "text": "# Note the requirement for the escape character for |\nfrom pyspark.sql.functions import explode\n\nexplodedNamesDf \u003d pennDf.withColumn(\"object_name\", explode(split(\"object_name\", \"\\|\")))\nexplodedNamesDf.show(20)",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922641_624329057",
+      "id": "20180210-220422_1187559654",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Create Columns for AD or for BC",
+      "text": "pennDf \u003d pennDf.withColumn(\u0027AD\u0027, pennDf.date_made.like(\"%AD%\"))\npennDf \u003d pennDf.withColumn(\u0027BC\u0027, pennDf.date_made.like(\"%BC%\"))\npennDf.select(\u0027emuIRN\u0027, \u0027AD\u0027, \u0027BC\u0027, \u0027date_made\u0027).show()",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 478.0,
+              "optionOpen": false
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922642_625483304",
+      "id": "20180210-213550_325903017",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Remove Whitespace around Dates (Bc Why Not)",
+      "text": "from pyspark.sql.functions import regexp_replace\n\ndateTestDf \u003d pennDf.withColumn(\"date_made_cleaned\", regexp_replace(pennDf.date_made, \"\\s+\", \"\"))\ndateTestDf.select(\"date_made_cleaned\").distinct().show()",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922642_625483304",
+      "id": "20180211-035409_418875897",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "",
+      "text": "%md\n### Stopping Point: Create some Derivative Dataframes with your CHO dataset. Think of what would make a good SQL Query dataset.",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "title": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eStopping Point: Create some Derivative Dataframes with your CHO dataset. Think of what would make a good SQL Query dataset.\u003c/h3\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922642_625483304",
+      "id": "20180211-205149_2050933534",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Your Working Space: Deriving DataFrames",
+      "text": "\n",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "editorHide": false,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922642_625483304",
+      "id": "20180211-205238_1685626655",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "",
+      "text": "%md\n# Part 4: Using SQL to Analyze our Dataset",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "title": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003ePart 4: Using SQL to Analyze our Dataset\u003c/h1\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922642_625483304",
+      "id": "20180211-070011_2131671710",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Introduction to SQL Queries ",
+      "text": "%md\n[Here](http://cse.unl.edu/~sscott/ShowFiles/SQL/CheatSheet/SQLCheatSheet.html) is a SQL Cheatsheet in case you need it.",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003e\u003ca href\u003d\"http://cse.unl.edu/~sscott/ShowFiles/SQL/CheatSheet/SQLCheatSheet.html\"\u003eHere\u003c/a\u003e is a SQL Cheatsheet in case you need it.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922642_625483304",
+      "id": "20180211-040724_834116241",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Creating a Temporary SQL View from Penn DataFrames",
+      "text": "curatorialOnlyDf.createOrReplaceTempView(\"curatorialView\")\nnoDescDf.createOrReplaceTempView(\"noDescView\")",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922643_625098555",
+      "id": "20180211-071952_1262010614",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Query Penn DataFrame View for Number of Cultures per Curatorial Section",
+      "text": "sparkQuery \u003d spark.sql(\"\"\"SELECT curatorial_section, COUNT(DISTINCT(culture)) AS NumCultures FROM curatorialView GROUP BY curatorial_section\"\"\")\nfor n in sparkQuery.collect():\n    n",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922643_625098555",
+      "id": "20180211-072058_265727285",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Query Penn DataFrame View for Number of No Title-Creator-Description Records per Curatorial Section",
+      "text": "sparkQuery2 \u003d spark.sql(\"\"\"SELECT curatorial_section, COUNT(DISTINCT(emuIRN)) AS NumResources FROM noDescView GROUP BY curatorial_section\"\"\")\nfor n in sparkQuery.collect():\n    n",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "editorHide": false,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922643_625098555",
+      "id": "20180212-061229_887304088",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "",
+      "text": "%md\n### Stopping Point: Create a Temporary View \u0026 Run a SQL Query",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "title": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eStopping Point: Create a Temporary View \u0026amp; Run a SQL Query\u003c/h3\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922643_625098555",
+      "id": "20180211-205631_117220376",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Your Working Space: Create a Spark View from your Dataframe(s)",
+      "text": "\n",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "editorHide": false,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922643_625098555",
+      "id": "20180211-205653_111316135",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Your Working Space: Run some Spark SQL Queries",
+      "text": "\n",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "editorHide": false,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922644_623174810",
+      "id": "20180211-211110_718731458",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "",
+      "text": "%md\n# Part 5: Simple Data Visualization",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "title": false,
+        "results": {},
+        "enabled": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003ePart 5: Simple Data Visualization\u003c/h1\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922644_623174810",
+      "id": "20180211-072644_1534169002",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql \nSELECT curatorial_section, \nCOUNT(DISTINCT(culture)) AS NumCultures \nFROM curatorialView \nGROUP BY curatorial_section",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300.0,
+              "optionOpen": true
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true,
+        "editorSetting": {
+          "language": "sql"
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922644_623174810",
+      "id": "20180211-210732_864456388",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "",
+      "text": "%md\n### Stopping Point: From your Temporary Views, Create a Simple Viz",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "title": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eStopping Point: From your Temporary Views, Create a Simple Viz\u003c/h3\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922644_623174810",
+      "id": "20180211-211201_433698257",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Your Working Space: Spark View \u003d\u003e SQL Query \u0026 Viz",
+      "text": "%sql\n\n",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "editorHide": false,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922644_623174810",
+      "id": "20180211-211029_1012657635",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n",
+      "dateUpdated": "Feb 12, 2018 6:08:42 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458922644_623174810",
+      "id": "20180211-080404_990095708",
+      "dateCreated": "Feb 12, 2018 6:08:42 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark Workshop: CHO Data",
+  "id": "2D7GTTE62",
+  "angularObjects": {
+    "2D8F6TC39:shared_process": [],
+    "2D7NXVY4B:shared_process": [],
+    "2D8A6MQRC:shared_process": [],
+    "2D5PJ3NSA:shared_process": [],
+    "2D6EP7ZA2:shared_process": [],
+    "2D5TJGRY4:shared_process": [],
+    "2D5VZHKP9:shared_process": [],
+    "2D89YMPRJ:shared_process": [],
+    "2D72HVDPJ:shared_process": [],
+    "2D6DB2GSE:shared_process": [],
+    "2D7ZKW5Z8:shared_process": [],
+    "2D6YB5W7T:shared_process": [],
+    "2D6DKU8MK:shared_process": [],
+    "2D4ZW7PCP:shared_process": [],
+    "2D566ZBPK:shared_process": [],
+    "2D866A3V3:shared_process": [],
+    "2D7TTRTEG:shared_process": [],
+    "2D71TQHNV:shared_process": [],
+    "2D57SSSRY:shared_process": []
+  },
+  "config": {},
+  "info": {}
+}

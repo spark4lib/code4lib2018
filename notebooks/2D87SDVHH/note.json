@@ -1,0 +1,1932 @@
+{
+  "paragraphs": [
+    {
+      "title": "Getting Started with Spark - Spark Workshop, Code4Lib 2018",
+      "text": "%md\nSpark Workshop, code4lib 2018\nMaterials at [github.com/spark4lib/code4lib2018](https://github.com/spark4lib/code4lib2018)\n\nThe following steps should also be available, with other notes, here: [https://github.com/spark4lib/code4lib2018/tree/master/worksheets/](https://github.com/spark4lib/code4lib2018/tree/master/worksheets) .",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eSpark Workshop, code4lib 2018\u003cbr/\u003eMaterials at \u003ca href\u003d\"https://github.com/spark4lib/code4lib2018\"\u003egithub.com/spark4lib/code4lib2018\u003c/a\u003e\u003c/p\u003e\n\u003cp\u003eThe following steps should also be available, with other notes, here: \u003ca href\u003d\"https://github.com/spark4lib/code4lib2018/tree/master/worksheets\"\u003ehttps://github.com/spark4lib/code4lib2018/tree/master/worksheets/\u003c/a\u003e .\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930885_1735114456",
+      "id": "20180131-144721_1911570621",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Introduction",
+      "text": "%md\nIn this session, you will learn Zeppelin, Spark, \u0026 Spark SQL basics via primarily the DataFrames API. We are starting with a really simple dataset to focus on the tools. In the next session, we will use an expanded cultural heritage metadata set.\n\n#### Datasets? DataFrames?\n\nA **Dataset** is a distributed collection of data. Dataset provides the benefits of strong typing, ability to use powerful lambda functions with the benefits of (Spark SQL’s) optimized execution engine. A Dataset can be constructed from JVM objects and then manipulated using functional transformations (map, flatMap, filter, etc.). The Dataset API is available in Scala and Java.\n\nA **DataFrame** is a Dataset organized into named columns. It is conceptually equivalent to a table in a relational database or a data frame in R/Python, but with richer optimizations under the hood. DataFrames can be constructed from a wide array of sources such as: structured data files, tables in Hive, external databases, or existing RDDs. The DataFrame API is available in Scala, Java, Python, and R. In Scala and Java, a DataFrame is represented by a Dataset of Rows. In the Scala API, DataFrame is simply a type alias of Dataset[Row]. (Note that in Scala type parameters (generics) are enclosed in square brackets.)\n\n[[source](http://spark.apache.org/docs/2.0.0/sql-programming-guide.html#datasets-and-dataframes)]\n\n#### How to run a paragraph\n\nTo run a paragraph in a Zeppelin notebook, you can either click the `play` button (blue triangle) on the right-hand side or click on the paragraph simply press `Shift + Enter`.\n\n#### What are Zeppelin Interpreters?\n\nIn the following paragraphs we are going to execute Spark code, run shell commands to download and move files, run sql queries etc. Each paragraph will start with `%` followed by an interpreter name, e.g. `%spark2` for a Spark 2.x interpreter. Different interpreter names indicate what will be executed: code, markdown, html etc.  This allows you to perform data ingestion, munging, wrangling, visualization, analysis, processing and more, all in one place!\n\nThroughout this notebook we will use the following interpreters:\n\n- `` - the default interpreter is set to be PySpark for our Workshop Docker Container.\n- `%spark` - Spark interpreter to run Spark code written in Scala\n- `%spark.sql` - Spark SQL interprter (to execute SQL queries against temporary tables in Spark)\n- `%sh` - Shell interpreter to run shell commands\n- `%angular` - Angular interpreter to run Angular and HTML code\n- `%md` - Markdown for displaying formatted text, links, and images\n\nTo learn more about Zeppelin interpreters check out this [link](https://zeppelin.apache.org/docs/0.5.6-incubating/manual/interpreters.html).",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eIn this session, you will learn Zeppelin, Spark, \u0026amp; Spark SQL basics via primarily the DataFrames API. We are starting with a really simple dataset to focus on the tools. In the next session, we will use an expanded cultural heritage metadata set.\u003c/p\u003e\n\u003ch4\u003eDatasets? DataFrames?\u003c/h4\u003e\n\u003cp\u003eA \u003cstrong\u003eDataset\u003c/strong\u003e is a distributed collection of data. Dataset provides the benefits of strong typing, ability to use powerful lambda functions with the benefits of (Spark SQL’s) optimized execution engine. A Dataset can be constructed from JVM objects and then manipulated using functional transformations (map, flatMap, filter, etc.). The Dataset API is available in Scala and Java.\u003c/p\u003e\n\u003cp\u003eA \u003cstrong\u003eDataFrame\u003c/strong\u003e is a Dataset organized into named columns. It is conceptually equivalent to a table in a relational database or a data frame in R/Python, but with richer optimizations under the hood. DataFrames can be constructed from a wide array of sources such as: structured data files, tables in Hive, external databases, or existing RDDs. The DataFrame API is available in Scala, Java, Python, and R. In Scala and Java, a DataFrame is represented by a Dataset of Rows. In the Scala API, DataFrame is simply a type alias of Dataset[Row]. (Note that in Scala type parameters (generics) are enclosed in square brackets.)\u003c/p\u003e\n\u003cp\u003e[\u003ca href\u003d\"http://spark.apache.org/docs/2.0.0/sql-programming-guide.html#datasets-and-dataframes\"\u003esource\u003c/a\u003e]\u003c/p\u003e\n\u003ch4\u003eHow to run a paragraph\u003c/h4\u003e\n\u003cp\u003eTo run a paragraph in a Zeppelin notebook, you can either click the \u003ccode\u003eplay\u003c/code\u003e button (blue triangle) on the right-hand side or click on the paragraph simply press \u003ccode\u003eShift + Enter\u003c/code\u003e.\u003c/p\u003e\n\u003ch4\u003eWhat are Zeppelin Interpreters?\u003c/h4\u003e\n\u003cp\u003eIn the following paragraphs we are going to execute Spark code, run shell commands to download and move files, run sql queries etc. Each paragraph will start with \u003ccode\u003e%\u003c/code\u003e followed by an interpreter name, e.g. \u003ccode\u003e%spark2\u003c/code\u003e for a Spark 2.x interpreter. Different interpreter names indicate what will be executed: code, markdown, html etc. This allows you to perform data ingestion, munging, wrangling, visualization, analysis, processing and more, all in one place!\u003c/p\u003e\n\u003cp\u003eThroughout this notebook we will use the following interpreters:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e`` - the default interpreter is set to be PySpark for our Workshop Docker Container.\u003c/li\u003e\n  \u003cli\u003e\u003ccode\u003e%spark\u003c/code\u003e - Spark interpreter to run Spark code written in Scala\u003c/li\u003e\n  \u003cli\u003e\u003ccode\u003e%spark.sql\u003c/code\u003e - Spark SQL interprter (to execute SQL queries against temporary tables in Spark)\u003c/li\u003e\n  \u003cli\u003e\u003ccode\u003e%sh\u003c/code\u003e - Shell interpreter to run shell commands\u003c/li\u003e\n  \u003cli\u003e\u003ccode\u003e%angular\u003c/code\u003e - Angular interpreter to run Angular and HTML code\u003c/li\u003e\n  \u003cli\u003e\u003ccode\u003e%md\u003c/code\u003e - Markdown for displaying formatted text, links, and images\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eTo learn more about Zeppelin interpreters check out this \u003ca href\u003d\"https://zeppelin.apache.org/docs/0.5.6-incubating/manual/interpreters.html\"\u003elink\u003c/a\u003e.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930886_1736268702",
+      "id": "20180211-041642_2058564180",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Environment Set-up Test",
+      "text": "%spark\n\nprintln(\"Spark Version: \" + sc.version)\n\nval penndata \u003d sc.textFile(\"penn.csv\")\nval cmoadata \u003d sc.textFile(\"cmoa.csv\")\nprintln(\"penn count: \" + penndata.count)\nprintln(\"cmoadata count: \" + cmoadata.count)",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930887_1735883953",
+      "id": "20180131-144538_432654498",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Preview Sample Data",
+      "text": "%sh\ncat code4lib2018/sample-data/small-sample.csv",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "lineNumbers": true,
+        "tableHide": false,
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sh",
+        "editorHide": false,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930887_1735883953",
+      "id": "20180210-010216_1168213332",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Our Sample Data",
+      "text": "%md\n\nName | Institution Type | Format | URL | Description | Informal Score\n---- | ---------------- | ------ | --- | ----------- | --------------\nCMOA | Museum | \"JSON, CSV\" | https://github.com/cmoa/collection |  | 10\nPenn Museum | Museum | \"JSON, CSV, XML\" | https://www.penn.museum/collections/data.php | JSON is poorly structured | 7\nMet Museum | Museum | CSV |  | \"¯\\_(ツ)_/¯\n\" | 3\nDigitalNZ Te Puna Web Directory | Library | XML | https://natlib.govt.nz/files/data/tepunawebdirectory.xml | MARC XML | 3\nCanadian Subject Headings | Library | RDF/XML | http://www.collectionscanada.gc.ca/obj/900/f11/040004/csh.rdf | \"Ugh, rdf\" | 4\nDPLA | Aggregator  | \"CSV,JSON,XML\" | dp.la | | 100\n",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930887_1735883953",
+      "id": "20180211-043610_1714070353",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "",
+      "text": "%md\n# Part 1: Creating a Dataframe Instance from CSV",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "title": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003ePart 1: Creating a Dataframe Instance from CSV\u003c/h1\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930887_1735883953",
+      "id": "20180211-043612_1888524633",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Read a CSV File into a Dataframe Instance \u0026 View It",
+      "text": "print(spark.read.csv(\"small-sample.csv\"))\nspark.read.csv(\"small-sample.csv\").show()",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "lineNumbers": true,
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "editorHide": false,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930888_1733960209",
+      "id": "20180205-215000_1411168291",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Read a CSV File into a Dataframe Instance with Headers",
+      "text": "spark.read.csv(\"code4lib2018/sample-data/small-sample.csv\", header\u003dTrue).show()",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "lineNumbers": true,
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "editorHide": false,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930888_1733960209",
+      "id": "20180210-002750_1470779955",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Read a CSV File into a Dataframe Instance with DROPMALFORMED mode",
+      "text": "spark.read.csv(\"code4lib2018/sample-data/small-sample.csv\", header\u003dTrue, mode\u003d\"DROPMALFORMED\").show()",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "lineNumbers": true,
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "editorHide": false,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930889_1733575460",
+      "id": "20180210-002834_476482959",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Read a CSV File into a Dataframe Instance with multiLine...?",
+      "text": "spark.read.csv(\"code4lib2018/sample-data/small-sample.csv\", header\u003dTrue, multiLine\u003dTrue).show()",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "lineNumbers": true,
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "colWidth": 6.0,
+        "editorMode": "ace/mode/scala",
+        "editorHide": false,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930889_1733575460",
+      "id": "20180210-002956_613592773",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Temporary Python Repair of CSV Newlines within PySpark",
+      "text": "import csv\n\n# we will see a cleaner way using pyspark to handle this issue later\n# though really, use proper quoting with Spark 2.2.x \u0026 multifile\u003dTrue\n\nwith open(\u0027code4lib2018/sample-data/small-sample.csv\u0027) as fh:\n    test \u003d csv.reader(fh)\n    with open(\u0027code4lib2018/sample-data/small-sample-stripped.csv\u0027, \u0027w\u0027) as fout:\n        test_write \u003d csv.writer(fout, quoting\u003dcsv.QUOTE_ALL)\n        for row in test:\n            new_row \u003d [val.replace(\"\\r\\n\", \"\") for val in row]\n            test_write.writerow(new_row)",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "lineNumbers": true,
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "colWidth": 6.0,
+        "editorMode": "ace/mode/scala",
+        "editorHide": false,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930889_1733575460",
+      "id": "20180210-004851_951565379",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Check that Our Temporary Repair Worked for our CSV",
+      "text": "%sh\ncat \u0027code4lib2018/sample-data/small-sample-stripped.csv\u0027",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sh",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930889_1733575460",
+      "id": "20180210-004958_2013545188",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Revisit our CSV as a Dataframe \u0026 It\u0027s Inferred Schema",
+      "text": "spark.read.csv(\"code4lib2018/sample-data/small-sample-stripped.csv\", header\u003dTrue, inferSchema\u003dTrue).printSchema()",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930890_1734729707",
+      "id": "20180210-005045_657129235",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Create Our Own Schema \u0026 Read the CSV into a Dataframe Instance with our Schema",
+      "text": "from pyspark.sql.types import *\n\ncustomSchema \u003d StructType([\n  StructField(\"Name\", StringType(), True),\n  StructField(\"Institution Type\", StringType(), True),\n  StructField(\"Format\", StringType(), True),\n  StructField(\"URL\", StringType(), True),\n  StructField(\"Description\", StringType(), True),\n  StructField(\"Informal Score\", DecimalType(), True)])\n\nsampleDf \u003d spark.read.csv(\"code4lib2018/sample-data/small-sample-stripped.csv\", header\u003dTrue, schema\u003dcustomSchema)\nsampleDf.show()",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930891_1734344958",
+      "id": "20180205-224139_1405421836",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "",
+      "text": "%md\n### Stopping Point: Have you been able to walk through and load your CSV?",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "title": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eStopping Point: Have you been able to walk through and load your CSV?\u003c/h3\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930896_1743194182",
+      "id": "20180211-204040_1741647870",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "",
+      "text": "%md\n# Part 2: Simple Analysis of our Dataset via Dataframe API",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "title": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003ePart 2: Simple Analysis of our Dataset via Dataframe API\u003c/h1\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930899_1743578931",
+      "id": "20180211-044238_542100528",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Return First n Rows in your Dataframe ( .head(n) )",
+      "text": "sampleDf.head(2)",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930899_1743578931",
+      "id": "20180210-203445_1454325544",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Show Columns ( .columns() ) \u0026 Number of Columns ( .len() ) in your Dataframe",
+      "text": "print(sampleDf.columns)\nprint(len(sampleDf.columns))",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930899_1743578931",
+      "id": "20180210-203724_1788119369",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Show Specific Columns ( .select() )",
+      "text": "sampleDf.select(\"Name\").show()\nsampleDf.select(\"Name\", \"Informal Score\").show()",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 6.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930899_1743578931",
+      "id": "20180211-044743_1705262796",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Selecting Columns ( .select() ) versus Apply Filters ( .filter() )",
+      "text": "scoresBooleanDf \u003d sampleDf.select(\u0027Name\u0027, \u0027URL\u0027, sampleDf[\u0027Informal Score\u0027] \u003e 5)\nscoresBooleanDf.show()\n\nhighScoresDf \u003d sampleDf.filter(sampleDf[\u0027Informal Score\u0027] \u003e 5)\nhighScoresDf.select(\u0027Name\u0027, \u0027URL\u0027, \u0027Informal Score\u0027).show()",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 6.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930899_1743578931",
+      "id": "20180210-011244_1927422767",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "How Many Rows? ( .count() )",
+      "text": "numSampleDf \u003d sampleDf.count()\nnumHighScoresDf \u003d highScoresDf.count()\n\nprint(\"Percentage of Datasets with a Score at or above 5: \" + str(float(numHighScoresDf)/float(numSampleDf)*100) + \"%\")",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930899_1743578931",
+      "id": "20180205-225126_643532571",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Show First n Rows of Dataframe in Show View ( .show(n) )",
+      "text": "sampleDf.show(2,truncate\u003dTrue)",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930900_1741655187",
+      "id": "20180210-203520_832539356",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Show Stats Summary of your Dataframe ( .describe() )",
+      "text": "sampleDf.describe().show()",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930900_1741655187",
+      "id": "20180210-203742_684138715",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Show Stats Summary of a Specific Column ( .describe(colName) , DecimalType)",
+      "text": "sampleDf.describe(\u0027Informal Score\u0027).show()",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 6.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930900_1741655187",
+      "id": "20180210-211801_243937278",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Show Stats Summary of a Specific Column ( .describe(colName) , StringType)",
+      "text": "sampleDf.describe(\u0027URL\u0027).show()",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 6.0,
+        "editorMode": "ace/mode/scala",
+        "editorHide": false,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930900_1741655187",
+      "id": "20180211-073524_2028466772",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "",
+      "text": "%md\n### Stopping Point: Have you been able to walk through reviewing some Rows \u0026 Columns?",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "title": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eStopping Point: Have you been able to walk through reviewing some Rows \u0026amp; Columns?\u003c/h3\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930900_1741655187",
+      "id": "20180211-204350_627919107",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Your Working Space: Analysis of Data I",
+      "text": "\n",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "editorHide": false,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930900_1741655187",
+      "id": "20180211-204610_53073346",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Order Dataframe Views by a Column ( .orderBy(colName) | .orderBy(colName).desc() )",
+      "text": "sampleDf.orderBy(\"Informal Score\").show()\nsampleDf.orderBy(sampleDf[\"Informal Score\"].desc()).show()",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930900_1741655187",
+      "id": "20180210-212920_1413184855",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Group Values by a Column ( .groupBy(colName) ) ",
+      "text": "URLGroupDf \u003d sampleDf.groupBy(\"Institution Type\").count()\n\nURLGroupDf.show()\nURLGroupDf.printSchema()",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 6.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930900_1741655187",
+      "id": "20180210-011435_1074589917",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Group Values by a Column then Compute an Aggregation ( .agg(expr) )",
+      "text": "# Note, this is setting us up for Splitting Values later on\n\nformatGroupDf \u003d sampleDf.groupBy(\"Institution Type\").agg({\"Informal Score\": \u0027mean\u0027})\nformatGroupDf.show()\nformatGroupDf.printSchema()",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 6.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930900_1741655187",
+      "id": "20180211-053908_436020978",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Show \u0026 Count Distinct Values in a Selected Column ( .distinct() )",
+      "text": "# Note, this is also setting us up for Splitting Values later on\n\ndistinctFormatDf \u003d sampleDf.select(\"Format\").distinct()\ndistinctFormatDf.show()\ndistinctFormatDf.count()",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930900_1741655187",
+      "id": "20180210-211959_911280658",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Use Aggregates ( .agg() ) \u0026 Sql Functions for Number of Distinct Values in Format ( countDistinct(colName) )",
+      "text": "from pyspark.sql.functions import countDistinct\n\ncountDistinctDF \u003d sampleDf.select(\"Name\", \"Institution Type\", \"Format\").groupBy(\"Institution Type\").agg(countDistinct(\"Format\"))\ncountDistinctDF.show()",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930901_1741270438",
+      "id": "20180211-035942_1079861047",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "",
+      "text": "%md\n### Stopping Point: Have you been able to group, order, get distinct values by column(s)?",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "title": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eStopping Point: Have you been able to group, order, get distinct values by column(s)?\u003c/h3\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930901_1741270438",
+      "id": "20180211-204432_1327378340",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Your Working Space: Analysis of Data II",
+      "text": "\n",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930901_1741270438",
+      "id": "20180211-204542_862151313",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "",
+      "text": "%md\n# Part 3: Creating New Dataframes to Expand or Rework our Original Dataset",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "title": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003ePart 3: Creating New Dataframes to Expand or Rework our Original Dataset\u003c/h1\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930901_1741270438",
+      "id": "20180211-052933_847596982",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Create a Dataframe of DeDuplicated Values ( .dropDuplicates() )",
+      "text": "scoresDf \u003d sampleDf.select(\u0027Informal Score\u0027).dropDuplicates()\nscoresDf.show()",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930901_1741270438",
+      "id": "20180210-212128_106635954",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Create a Dataframe with Null Values Dropped ( .dropna() ) or Null Values Filled ( .fillna(fillerVal) )",
+      "text": "noNullDf \u003d sampleDf.select(\u0027Name\u0027, \u0027URL\u0027).dropna()\nnoNullDf.show()\n\nnonNullDf \u003d sampleDf.select(\u0027Name\u0027, \u0027URL\u0027).fillna(\u0027No URL\u0027)\nnonNullDf.show()",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930901_1741270438",
+      "id": "20180210-212150_723012495",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Create Dataframe where URL is Null ( col.isNull() \u0026\u0026 .filter() )",
+      "text": "filterNonNullDF \u003d sampleDf.filter(sampleDf.URL.isNull()).sort(\"Name\")\nfilterNonNullDF.show()",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930901_1741270438",
+      "id": "20180211-032722_1642010293",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "",
+      "text": "%md\n### Stopping Point: Create some Derivative Dataframes",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "title": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eStopping Point: Create some Derivative Dataframes\u003c/h3\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930901_1741270438",
+      "id": "20180211-205119_924209624",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Your Working Space: Deriving Data I",
+      "text": "\n",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "editorHide": false,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930902_1742424685",
+      "id": "20180211-204757_140350285",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Create a new DataFrame with \u0027Format Array\u0027 column ( .withColumn(colName, colValue) ) of Split Values ( split(col, delimiter) )",
+      "text": "from pyspark.sql.functions import split\n\nsampleDf \u003d sampleDf.withColumn(\"Format Array\", split(sampleDf.Format, \",\"))\nsampleDf.show()\nsampleDf.printSchema()",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "lineNumbers": true,
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "editorHide": false,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930902_1742424685",
+      "id": "20180211-054754_1895175973",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Use pyspark.sql.functions Explode ( explode(col) ) \u0026 Split ( .split(colName, delimiter) ) to Create a Row for each unique Format Value",
+      "text": "from pyspark.sql.functions import explode\n\nsampleDf \u003d sampleDf.withColumn(\"Format\", explode(split(\"Format\", \",\")))\nsampleDf.show()",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930902_1742424685",
+      "id": "20180210-220422_1187559654",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Create New Columns ( withColumn(colName, colValue) ) with Boolean if Format Type Present ( .like(Regex) )",
+      "text": "sampleDf.select(\"Format\").distinct().show()\nsampleDf \u003d sampleDf.withColumn(\u0027CSV\u0027, sampleDf.Format.like(\"%CSV%\"))\nsampleDf \u003d sampleDf.withColumn(\u0027XML\u0027, sampleDf.Format.like(\"%XML%\"))\nsampleDf \u003d sampleDf.withColumn(\u0027RDF\u0027, sampleDf.Format.like(\"%RDF%\"))\nsampleDf \u003d sampleDf.withColumn(\u0027JSON\u0027, sampleDf.Format.like(\"%JSON%\"))\nsampleDf.show()",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 478.0,
+              "optionOpen": false
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930902_1742424685",
+      "id": "20180210-213550_325903017",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Transform our Dataframe to RDD ( .rdd ) \u0026 Map a function ( .map(lambda) )",
+      "text": "sampleRdd \u003d sampleDf.select(\"Format\").rdd.map(lambda x: x[0].split(\",\"))\nsampleRdd.take(5)",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930902_1742424685",
+      "id": "20180211-055309_116193468",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Drop the Previous Format Array Column",
+      "text": "sampleDf \u003d sampleDf.drop(\u0027Format Array\u0027)\nsampleDf.show()",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930902_1742424685",
+      "id": "20180210-213416_1825779467",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Check our Distinct Format Values Now",
+      "text": "sampleDf.select(\"Format\").distinct().show()",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930902_1742424685",
+      "id": "20180211-060909_1786306955",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Remove Whitespace around Format using Regex ( reqexp_replace(colName, regex to replace, new value) )",
+      "text": "from pyspark.sql.functions import regexp_replace\n\nsampleDf \u003d sampleDf.withColumn(\"Format\", regexp_replace(sampleDf.Format, \"\\s+\", \"\"))\nsampleDf.select(\"Format\").distinct().show()",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930902_1742424685",
+      "id": "20180211-035409_418875897",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Create Dataframe where Format is CSV ( .where(conditional) )",
+      "text": "CSVsampleDf \u003d sampleDf.where((sampleDf.Format \u003d\u003d \"CSV\"))\nCSVsampleDf.show()",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 181.0,
+              "optionOpen": false
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930903_1742039936",
+      "id": "20180210-215449_392462777",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "",
+      "text": "%md\n### Stopping Point: Create some Derivative Dataframes to Address Multivalue Format or related Issues",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "title": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eStopping Point: Create some Derivative Dataframes to Address Multivalue Format or related Issues\u003c/h3\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930903_1742039936",
+      "id": "20180211-205149_2050933534",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Your Working Space: Deriving Data II",
+      "text": "\n",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "editorHide": false,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930903_1742039936",
+      "id": "20180211-205238_1685626655",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "",
+      "text": "%md\n# Part 4: Using SQL to Analyze our Dataset",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "title": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003ePart 4: Using SQL to Analyze our Dataset\u003c/h1\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930903_1742039936",
+      "id": "20180211-070011_2131671710",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Introduction to SQL Queries ",
+      "text": "%md\nTo have a more dynamic experience, let’s create a temporary (in-memory) view that we can query against and interact with the resulting data in a table or graph format. The temporary view will allow us to execute SQL queries against it.\n\nNote that the temporary view will reside in memory as long as the Spark session is alive. [Here](http://cse.unl.edu/~sscott/ShowFiles/SQL/CheatSheet/SQLCheatSheet.html) is a SQL Cheatsheet in case you need it.",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eTo have a more dynamic experience, let’s create a temporary (in-memory) view that we can query against and interact with the resulting data in a table or graph format. The temporary view will allow us to execute SQL queries against it.\u003c/p\u003e\n\u003cp\u003eNote that the temporary view will reside in memory as long as the Spark session is alive. \u003ca href\u003d\"http://cse.unl.edu/~sscott/ShowFiles/SQL/CheatSheet/SQLCheatSheet.html\"\u003eHere\u003c/a\u003e is a SQL Cheatsheet in case you need it.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930903_1742039936",
+      "id": "20180211-040724_834116241",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Creating a Temporary SQL View from our Sample Dataframe \u0026 Running a Simple SQL Query",
+      "text": "# Convert SampleDF DataFrame to a temporary view\nsampleDf.createOrReplaceTempView(\"sampleDataView\")\n\nsparkQuery \u003d spark.sql(\"SELECT * FROM sampleDataView LIMIT 20\")\nsparkQuery.collect()",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930904_1740116191",
+      "id": "20180211-071952_1262010614",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Querying our Temporary View for Number of Distinct Formats per Institution Type",
+      "text": "sparkQuery \u003d spark.sql(\"\"\"SELECT `Institution Type`, COUNT(DISTINCT(Format)) AS NumFormats FROM sampleDataView GROUP BY `Institution Type`\"\"\")\nsparkQuery.collect()\nfor n in sparkQuery.collect():\n    n",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930904_1740116191",
+      "id": "20180211-072058_265727285",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "",
+      "text": "%md\n### Stopping Point: Create a Temporary View \u0026 Run a SQL Query",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "title": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eStopping Point: Create a Temporary View \u0026amp; Run a SQL Query\u003c/h3\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930904_1740116191",
+      "id": "20180211-205631_117220376",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Your Working Space: Create a Spark View from your Dataframe(s)",
+      "text": "\n",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "editorHide": false,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930904_1740116191",
+      "id": "20180211-205653_111316135",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Your Working Space: Run some Spark SQL Queries",
+      "text": "\n",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "editorHide": false,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930905_1739731442",
+      "id": "20180211-211110_718731458",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "",
+      "text": "%md\n# Part 5: Simple Data Visualization",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "title": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003ePart 5: Simple Data Visualization\u003c/h1\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930905_1739731442",
+      "id": "20180211-072644_1534169002",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql \nSELECT `Institution Type`, COUNT(DISTINCT(Format)) AS NumFormats\nFROM sampleDataView\nGROUP BY `Institution Type`",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": true
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true,
+        "editorSetting": {
+          "language": "sql"
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930905_1739731442",
+      "id": "20180211-210732_864456388",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "",
+      "text": "%md\n### Stopping Point: From your Temporary Views, Create a Simple Viz",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "title": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eStopping Point: From your Temporary Views, Create a Simple Viz\u003c/h3\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930905_1739731442",
+      "id": "20180211-211201_433698257",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Your Working Space: Spark View \u003d\u003e SQL Query \u0026 Viz",
+      "text": "%sql\n\n",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "lineNumbers": true,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "editorHide": false,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930905_1739731442",
+      "id": "20180211-211029_1012657635",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n",
+      "dateUpdated": "Feb 12, 2018 6:08:50 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1518458930906_1740885689",
+      "id": "20180211-080404_990095708",
+      "dateCreated": "Feb 12, 2018 6:08:50 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Spark Workshop: Shell Intro",
+  "id": "2D87SDVHH",
+  "angularObjects": {
+    "2D8F6TC39:shared_process": [],
+    "2D7NXVY4B:shared_process": [],
+    "2D8A6MQRC:shared_process": [],
+    "2D5PJ3NSA:shared_process": [],
+    "2D6EP7ZA2:shared_process": [],
+    "2D5TJGRY4:shared_process": [],
+    "2D5VZHKP9:shared_process": [],
+    "2D89YMPRJ:shared_process": [],
+    "2D72HVDPJ:shared_process": [],
+    "2D6DB2GSE:shared_process": [],
+    "2D7ZKW5Z8:shared_process": [],
+    "2D6YB5W7T:shared_process": [],
+    "2D6DKU8MK:shared_process": [],
+    "2D4ZW7PCP:shared_process": [],
+    "2D566ZBPK:shared_process": [],
+    "2D866A3V3:shared_process": [],
+    "2D7TTRTEG:shared_process": [],
+    "2D71TQHNV:shared_process": [],
+    "2D57SSSRY:shared_process": []
+  },
+  "config": {},
+  "info": {}
+}

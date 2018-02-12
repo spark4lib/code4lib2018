@@ -54,14 +54,15 @@ We will be sending out an email with the specific Docker image information befor
 
 If you have any issues with the above, please contact us ASAP using the [communication methods detailed above](#contact-before-during-after-the-workshop).
 
-### Docker info
-With the latest, stable version of Docker Community Edition installed, go to your favorite shell and run:
-- `docker pull mbdpla/sparkworkshop:latest`
-- `docker run -p 8080:8080 mbdpla/sparkworkshop:latest`
+### Running the Docker Container
+1. You need this GitHub repository locally. Clone it (and run `git pull origin master`) or download it, and make sure you have the latest copy.
+2. Change into the top level directory of this Git repository.
+3. With the latest, stable version of Docker Community Edition installed, go to your favorite shell and run: `docker pull mbdpla/sparkworkshop:latest`
+4. In that same top level directory of this Git repository, now run: `docker run -p 8080:8080 -v $PWD:/code4lib2018 -e ZEPPELIN_NOTEBOOK_DIR='/code4lib2018/notebooks' mbdpla/sparkworkshop:latest`
 
-This should download and start up our Zeppelin Docker image on your machine. Check if it is running by opening and web browser and going to http://localhost:8080. This should show Zeppelin Notebook homepage. 
+This should download and start up our Zeppelin Docker image on your machine. Check if it is running by opening and web browser and going to http://localhost:8080. This should show Zeppelin Notebook homepage with 2 notebooks loaded. **It will save Notebooks directly to your GitHub repository directory, so be aware of that!**
 
-We recommend waiting until Monday evening before the workshop to pull the latest Docker image for this workshop, as we are still actively adding data and notebooks.
+We recommend re-pulling both this repository & the docker image Monday evening, if possible, to make sure you get the latest representation of the work.
 
 The day of, we will also bring thumbdrives with our workshop Docker image on it.
 

@@ -5,7 +5,7 @@ Welcome to the open repository, documentation and materials for the Code4Lib 201
 * When: Tuesday, February 13th, 2018, 9:00 AM - 12:00 PM
 * Where: [Omni Shoreham Hotel Senate Room, Main Conference Venue](http://2018.code4lib.org/general-info/venues/)
 * Workshop Materials: [github.com/spark4lib/code4lib2018](https://github.com/spark4lib/code4lib2018)
-* Workshop Slides (work in progress): [bit.ly/C4L18SparkSlides](http://bit.ly/C4L18SparkSlides) or in this Repository (TBD)
+* Workshop Slides: [bit.ly/C4L18SparkSlides](http://bit.ly/C4L18SparkSlides) or [in this Repository](slides/SparkInTheDark101.pdf)
 
 ## About the Workshop
 

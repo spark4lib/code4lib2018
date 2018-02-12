@@ -46,7 +46,7 @@ To keep this workshop a safe and inclusive space, we ask that you review and fol
 
 We request that all participants:
  - You should also fill out [this pre-workshop survey](https://goo.gl/forms/Ps9KhjnsauMbGdpv2) by **February 9th** in order to help the facilitators best plan.
-- You should bring a laptop with a modern web browser and at least 2Gb memory (at we strongly recommend, if you want to play with more than intro data, you think at least 4Gb);
+- You should bring a laptop with a modern web browser and at least 4Gb memory (at we strongly recommend, if you want to play with more than intro data, at least 6Gb);
 - On that laptop, please already have installed the latest, stable version of [Docker Community Edition](https://www.docker.com/community-edition) installed;
 - Also on that laptop, please have bookmarked or have pulled down the latest version of this GitHub repository.
 
@@ -55,6 +55,19 @@ We will be sending out an email with the specific Docker image information befor
 If you have any issues with the above, please contact us ASAP using the [communication methods detailed above](#contact-before-during-after-the-workshop).
 
 ### Docker info
+With the latest, stable version of Docker Community Edition installed, go to your favorite shell and run:
+- `docker pull mbdpla/sparkworkshop:latest`
+- `docker run -p 8080:8080 mbdpla/sparkworkshop:latest`
 
+This should download and start up our Zeppelin Docker image on your machine. Check if it is running by opening and web browser and going to http://localhost:8080. This should show Zeppelin Notebook homepage. 
+
+We recommend waiting until Monday evening before the workshop to pull the latest Docker image for this workshop, as we are still actively adding data and notebooks.
+
+The day of, we will also bring thumbdrives with our workshop Docker image on it.
 
 ### Backup Option
+
+- If wifi works, try a [free Databricks Community account online](https://databricks.com/try-databricks). This gives you a hosted Zeppelin notebook with Spark infrastructure, for free.
+- If you’re feeling up to it, [get Zeppelin installed locally on your computer](https://zeppelin.apache.org/docs/0.7.3/install/install.html). Zeppelin comes with Spark.
+
+Either way, you’ll need to pull the [data](sample-data/) & [notebooks](notebooks/) from this Github repository.

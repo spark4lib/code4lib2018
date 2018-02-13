@@ -1,6 +1,6 @@
 # Spark Practice: Working with `spark-shell` Steps
 
-The presenter is running this with a local, standalone installation of Spark 2.2.1. If you want to try this but don't have Spark installed, see the docker options for getting a container with Spark shell via PySpark available at [the bottom of this workshop](#run-the-spark---shell-walk---through-yourself). Slides (captured mainly as a back-up in case of computer issues: https://docs.google.com/presentation/d/1W3xGitwB_nM36kTvVRsAQjRtw763HI7S00-an0nhhSI/edit#slide=id.g2e2dc1ae6b_0_9)
+The presenter is running this with a local, standalone installation of Spark 2.2.1. If you want to try this but don't have Spark installed, see the docker options for getting a container with Spark shell via PySpark available at [the bottom of this workshop](#run-the-spark-shell-walk-through-yourself). Slides (captured mainly as a back-up in case of computer issues: https://docs.google.com/presentation/d/1W3xGitwB_nM36kTvVRsAQjRtw763HI7S00-an0nhhSI/edit#slide=id.g2e2dc1ae6b_0_9)
 
 ## Run a PySpark Interpreter Shell
 
